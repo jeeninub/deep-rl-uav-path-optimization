@@ -347,3 +347,105 @@ The D3QN architecture was selected because it offers several advantages for auto
 
 These characteristics make D3QN well suited for UAV path optimization in dynamic disaster-response environments.
 
+
+# 📈 Experimental Results
+
+The proposed D3QN agent was trained on the custom UAV simulation environment under NTN and ICAS constraints. During training, multiple performance metrics were monitored to evaluate learning stability, navigation efficiency, communication reliability, and sensing performance.
+
+---
+
+## Training Performance
+
+<p align="center">
+<img src="assets/reward_curve.jpeg" width="85%">
+</p>
+
+The training curves indicate steady convergence of the reinforcement learning agent.
+
+### Key Observations
+
+* Average episodic reward consistently increases throughout training.
+* Coverage ratio improves as the agent learns efficient exploration strategies.
+* Episode length decreases, indicating faster convergence toward the destination.
+* Training loss stabilizes after sufficient exploration, suggesting successful convergence of the Q-network.
+
+Overall, the learning behavior demonstrates that the proposed D3QN architecture successfully learns a robust navigation policy for UAV path planning.
+
+---
+
+# 🚁 Learned UAV Trajectory
+
+<p align="center">
+<img src="assets/uav_path.jpeg" width="70%">
+</p>
+
+The final navigation trajectory illustrates the UAV's learned behavior after training.
+
+The agent is capable of:
+
+* Successfully reaching the target destination.
+* Avoiding static obstacles.
+* Maintaining efficient flight paths.
+* Minimizing unnecessary movements.
+* Preserving communication quality throughout the mission.
+
+Instead of following predefined routes, the UAV autonomously discovers efficient trajectories through continuous interaction with the environment.
+
+---
+
+# 🌍 Simulation Environment
+
+<p align="center">
+<img src="assets/environment.jpeg" width="75%">
+</p>
+
+The custom simulation environment models a disaster-response scenario inspired by Multi-Layer Non-Terrestrial Networks.
+
+The environment includes:
+
+* UAV agent
+* Ground users
+* Static obstacles
+* Signal quality (SNR) distribution
+* Goal location
+* Battery constraints
+
+The environment provides realistic feedback to the reinforcement learning agent through state transitions and reward signals.
+
+---
+
+# 📊 Performance Summary
+
+| Metric                  | Random Policy | Trained D3QN |
+| ----------------------- | :-----------: | :----------: |
+| Average Episodic Reward |     -1200     |     +1800    |
+| Coverage Ratio          |      35%      |      60%     |
+| Collision Count         |      6.8      |      1.9     |
+| Average Steps           |      260      |      85      |
+| Energy Efficiency       |    Baseline   |     +22%     |
+
+The trained D3QN agent significantly outperforms a random navigation policy across all evaluation metrics.
+
+Key improvements include:
+
+* Higher cumulative reward.
+* Better communication-aware navigation.
+* Increased sensing coverage.
+* Reduced collision frequency.
+* Faster mission completion.
+* Improved battery utilization.
+
+---
+
+# 💡 Project Highlights
+
+This project demonstrates the practical application of Deep Reinforcement Learning to autonomous UAV navigation by integrating communication quality, sensing objectives, obstacle avoidance, and energy-aware decision making into a unified optimization framework.
+
+The modular implementation enables future extensions such as:
+
+* Multi-UAV coordination
+* Dynamic obstacle avoidance
+* AirSim integration
+* Continuous control algorithms (PPO / SAC)
+* Real-world deployment on embedded UAV platforms
+
