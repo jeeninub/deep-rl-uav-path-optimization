@@ -83,3 +83,45 @@ The solution is built around a **custom OpenAI Gym-compatible UAV environment** 
 
 ---
 
+# 🎯 Motivation
+
+Natural disasters such as earthquakes, floods, cyclones, and wildfires frequently damage terrestrial communication infrastructure, making coordination between emergency responders extremely challenging. In such situations, **Unmanned Aerial Vehicles (UAVs)** can rapidly establish temporary communication links while simultaneously surveying affected regions.
+
+Traditional path planning techniques rely on predefined routes or static optimization algorithms that struggle to adapt to dynamic environments containing changing obstacles, fluctuating communication quality, and limited onboard energy.
+
+This project investigates how **Deep Reinforcement Learning (DRL)** can enable a UAV to learn an optimal navigation policy directly through interaction with the environment. Instead of following handcrafted rules, the UAV continuously improves its decisions by maximizing long-term rewards that jointly consider communication reliability, sensing coverage, obstacle avoidance, and energy efficiency.
+
+The resulting framework demonstrates how reinforcement learning can be applied to autonomous aerial navigation in **Multi-Layer Non-Terrestrial Networks (NTNs)** under **Integrated Communication and Sensing (ICAS)** constraints.
+
+---
+
+# ❓ Problem Statement
+
+Design an intelligent UAV navigation framework capable of autonomously operating in disaster-affected environments where terrestrial communication infrastructure is unavailable.
+
+The autonomous agent should simultaneously:
+
+* Maintain reliable communication links by operating within high-SNR regions.
+* Maximize sensing coverage of the disaster area.
+* Avoid static obstacles and restricted regions.
+* Minimize unnecessary energy consumption.
+* Reach mission objectives through efficient path planning.
+
+The optimization objective is formulated as a **multi-objective reinforcement learning problem**, where the UAV learns an optimal policy by interacting with a custom simulation environment rather than following manually designed trajectories.
+
+---
+
+# 🌍 System Scenario
+
+The simulated environment models a post-disaster deployment scenario involving a **multi-layer Non-Terrestrial Network (NTN)** architecture.
+
+The network consists of:
+
+* 🚁 UAV acting as an intelligent aerial relay
+* 🛰️ High Altitude Platform (HAP)
+* 🌎 Low Earth Orbit (LEO) satellite connectivity
+* 👥 Ground users requiring emergency communication support
+
+The UAV continuously observes environmental conditions, selects navigation actions, receives feedback through a reward function, and gradually learns policies that balance communication quality, sensing performance, collision avoidance, and energy consumption.
+
+
