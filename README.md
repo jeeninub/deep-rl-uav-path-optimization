@@ -239,4 +239,111 @@ The reward encourages the UAV to:
 Instead of optimizing a single objective, the agent learns to balance multiple competing objectives simultaneously, resulting in more robust navigation policies suitable for disaster-response scenarios.
 
 
+# 🧠 Dueling Double Deep Q-Network (D3QN)
+
+The reinforcement learning agent is implemented using a **Dueling Double Deep Q-Network (D3QN)** architecture, which combines the advantages of **Double DQN** and **Dueling Networks** to achieve more stable and efficient learning in complex environments.
+
+Unlike a standard Deep Q-Network (DQN), D3QN addresses two major limitations:
+
+* **Overestimation of action values**, which can lead to unstable learning.
+* **Poor state-value estimation**, especially when multiple actions have similar outcomes.
+
+By integrating Double DQN and Dueling Network architectures, the agent learns a more reliable policy while improving convergence speed and overall navigation performance.
+
+---
+
+## Double DQN
+
+A standard DQN uses the same neural network to both **select** and **evaluate** the next action, often leading to overestimated Q-values.
+
+Double DQN separates these two responsibilities:
+
+* **Main Network** selects the best action.
+* **Target Network** evaluates the selected action.
+
+This significantly reduces value overestimation and improves training stability.
+
+---
+
+## Dueling Network
+
+Instead of directly predicting Q-values, the network is divided into two parallel streams:
+
+* **State Value Stream (V)** – estimates how good the current state is.
+* **Advantage Stream (A)** – estimates the benefit of taking each action.
+
+The final Q-value is computed as:
+
+```text
+Q(s,a) = V(s) + ( A(s,a) − mean(A(s,*)) )
+```
+
+This decomposition allows the agent to recognize valuable states even when the choice of action has only a small impact.
+
+---
+
+## Experience Replay
+
+Training consecutive transitions can introduce strong correlations, making learning unstable.
+
+To overcome this, every interaction is stored in a **Replay Buffer**.
+
+During training:
+
+1. The UAV interacts with the environment.
+2. Transitions `(state, action, reward, next_state)` are stored.
+3. Random mini-batches are sampled from memory.
+4. The neural network is updated using these randomized samples.
+
+Experience Replay improves data efficiency and stabilizes learning.
+
+---
+
+## Target Network Synchronization
+
+A separate Target Network is maintained to generate stable learning targets.
+
+Instead of updating after every training step, the Target Network is synchronized periodically with the Main Network.
+
+This prevents rapidly changing target values and significantly improves convergence.
+
+---
+
+## ε-Greedy Exploration Strategy
+
+To balance exploration and exploitation, the agent follows an ε-Greedy policy.
+
+* **High ε (early training):** explores the environment using random actions.
+* **Low ε (later training):** exploits the learned policy to maximize cumulative reward.
+
+As training progresses, ε gradually decays from a high value to encourage increasingly optimal decision-making.
+
+---
+
+## Training Configuration
+
+| Parameter             |                    Value |
+| --------------------- | -----------------------: |
+| Algorithm             |       Dueling Double DQN |
+| Optimizer             |                     Adam |
+| Learning Rate         |                     1e-4 |
+| Batch Size            |                       64 |
+| Discount Factor (γ)   |                     0.99 |
+| Replay Buffer         |      10,000+ transitions |
+| Target Network Update | Periodic Synchronization |
+| Episodes              |                    1000+ |
+
+---
+
+## Why D3QN?
+
+The D3QN architecture was selected because it offers several advantages for autonomous UAV navigation:
+
+* Better policy stability during training.
+* Reduced Q-value overestimation.
+* Improved convergence speed.
+* More efficient exploration of complex environments.
+* Better performance in multi-objective optimization problems involving communication quality, sensing coverage, obstacle avoidance, and energy efficiency.
+
+These characteristics make D3QN well suited for UAV path optimization in dynamic disaster-response environments.
 
