@@ -449,3 +449,127 @@ The modular implementation enables future extensions such as:
 * Continuous control algorithms (PPO / SAC)
 * Real-world deployment on embedded UAV platforms
 
+# 📂 Project Structure
+
+```text
+deep-rl-uav-path-optimization/
+│
+├── assets/                     # Project images used in README
+├── checkpoints_phase4/         # Trained model checkpoints
+├── docs/                       # Project report
+├── dqn_agent.py                # Dueling Double DQN implementation
+├── replay_buffer.py            # Experience Replay Buffer
+├── train_dqn.py                # Model training pipeline
+├── evaluate_dqn.py             # Evaluation pipeline
+├── uavenv.py                   # Custom UAV simulation environment
+├── utils.py                    # Visualization and helper utilities
+├── scene_phase4.json           # Environment configuration
+├── requirements.txt            # Project dependencies
+└── README.md
+```
+
+---
+
+# ⚙️ Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/jeeninub/deep-rl-uav-path-optimization.git
+cd deep-rl-uav-path-optimization
+```
+
+Install the required dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+# 🚀 Usage
+
+### Train the D3QN Agent
+
+```bash
+python train_dqn.py
+```
+
+### Evaluate the Trained Agent
+
+```bash
+python evaluate_dqn.py
+```
+
+Model checkpoints generated during training are stored in the `checkpoints_phase4/` directory.
+
+---
+
+# 🛠️ Technologies Used
+
+| Category               | Technology                          |
+| ---------------------- | ----------------------------------- |
+| Programming Language   | Python                              |
+| Deep Learning          | TensorFlow                          |
+| Reinforcement Learning | Dueling Double DQN (D3QN)           |
+| Environment            | Custom OpenAI Gym-style Environment |
+| Numerical Computing    | NumPy                               |
+| Visualization          | Matplotlib                          |
+| Configuration          | JSON                                |
+
+---
+
+# 🔮 Future Work
+
+Potential extensions of this project include:
+
+* Multi-UAV cooperative path planning
+* Dynamic obstacle avoidance
+* Integration with AirSim or Gazebo
+* Continuous control algorithms (PPO, SAC, TD3)
+* Prioritized Experience Replay
+* Deployment on embedded UAV hardware
+* Real-time communication-aware navigation
+* Weather-aware path planning
+* 3D terrain-aware autonomous navigation
+
+---
+
+# 📖 References
+
+* Sutton, R. S., & Barto, A. G. *Reinforcement Learning: An Introduction*.
+* Mnih et al. *Human-Level Control Through Deep Reinforcement Learning*. Nature (2015).
+* Van Hasselt et al. *Deep Reinforcement Learning with Double Q-Learning*.
+* Wang et al. *Dueling Network Architectures for Deep Reinforcement Learning*.
+* 3GPP Technical Reports on Non-Terrestrial Networks (NTNs).
+* OpenAI Gym Documentation.
+
+---
+
+# 👨‍💻 Authors
+
+**Sujal Jain**
+
+B.Tech Computer Science Engineering
+
+The LNM Institute of Information Technology, Jaipur
+
+---
+
+# ⭐ If you found this project useful
+
+Please consider giving this repository a **⭐ Star**.
+
+It motivates further development and future research contributions.
+
+---
+
+<div align="center">
+
+### Thank you for visiting this repository!
+
+*Building intelligent autonomous systems through Deep Reinforcement Learning.*
+
+</div>
+
+
