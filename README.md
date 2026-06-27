@@ -1,38 +1,50 @@
-# 🚁 Deep Reinforcement Learning for UAV Path Optimization
+## 📖 Project Overview
 
-A Deep Reinforcement Learning framework for autonomous UAV path optimization in Non-Terrestrial Networks (NTNs) using a custom OpenAI Gym environment and a Dueling Double Deep Q-Network (D3QN).
+Unmanned Aerial Vehicles (UAVs) are increasingly being deployed in disaster-response and emergency communication scenarios where conventional terrestrial infrastructure is unavailable or damaged. In such environments, the UAV must autonomously navigate while maintaining communication quality, avoiding obstacles, minimizing energy consumption, and maximizing sensing coverage.
 
-The project enables an Unmanned Aerial Vehicle (UAV) to learn collision-free, energy-efficient trajectories while maximizing communication quality, sensing coverage, and mission success in disaster-response scenarios.
+This project presents a **Deep Reinforcement Learning** solution for autonomous UAV path planning using a **Dueling Double Deep Q-Network (D3QN)**. A custom simulation environment was developed to model UAV movement, obstacle avoidance, communication quality, and mission objectives in a Non-Terrestrial Network (NTN).
+
+The agent learns an optimal navigation policy through interaction with the environment instead of relying on manually designed paths.
 
 ---
 
-## ✨ Features
+## 🚀 Key Features
 
-- Custom OpenAI Gym-compatible UAV environment
+- Custom UAV simulation environment
 - Dueling Double Deep Q-Network (D3QN)
 - Experience Replay Buffer
 - Target Network Synchronization
-- Epsilon-Greedy Exploration Strategy
+- Epsilon-Greedy Exploration
 - Dynamic Reward Function
-- Obstacle Avoidance
+- Collision Avoidance
 - Energy-Aware Navigation
-- NTN + ICAS based simulation
-- Model Checkpoint Saving
-- Training & Evaluation Pipeline
-- Path Visualization
+- NTN-inspired communication environment
+- Model checkpoint saving
+- Training & Evaluation scripts
+- Path visualization using Matplotlib
 
 ---
 
-## 📷 Demo
+## 🖼️ Results
 
 ### Environment
 
-![](assets/environment.jpeg)
+<p align="center">
+<img src="assets/environment.jpeg" width="650">
+</p>
+
+---
 
 ### Training Curves
 
-![](assets/reward_curve.jpeg)
+<p align="center">
+<img src="assets/reward_curve.jpeg" width="650">
+</p>
 
-### Learned UAV Path
+---
 
-![](assets/uav_path.jpeg)
+### Learned UAV Trajectory
+
+<p align="center">
+<img src="assets/uav_path.jpeg" width="650">
+</p>
