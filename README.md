@@ -39,3 +39,47 @@ The solution is built around a **custom OpenAI Gym-compatible UAV environment** 
 * 📊 Training & evaluation pipeline
 * 💾 Automatic model checkpointing
 * 📈 Performance visualization
+
+---
+
+# 📸 Project Demonstration
+
+<p align="center">
+
+<img src="assets/environment.jpeg" width="31%">
+<img src="assets/reward_curve.jpeg" width="31%">
+<img src="assets/uav_path.jpeg" width="31%">
+
+</p>
+
+<p align="center">
+
+<b>Simulation Environment</b>       <b>Training Performance</b>       <b>Learned UAV Trajectory</b>
+
+</p>
+
+---
+
+# 📑 Table of Contents
+
+* Overview
+* Motivation
+* Problem Statement
+* System Architecture
+* Reinforcement Learning Formulation
+* State Space
+* Action Space
+* Reward Function
+* Dueling Double DQN Architecture
+* Experience Replay
+* Target Network
+* Training Pipeline
+* Results
+* Folder Structure
+* Installation
+* Usage
+* Future Work
+* References
+
+---
+
