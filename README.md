@@ -124,4 +124,119 @@ The network consists of:
 
 The UAV continuously observes environmental conditions, selects navigation actions, receives feedback through a reward function, and gradually learns policies that balance communication quality, sensing performance, collision avoidance, and energy consumption.
 
+# 🏗️ System Architecture
+
+The framework consists of four major components that work together to train an autonomous UAV navigation policy.
+
+```text
+                 ┌──────────────────────────────┐
+                 │      Simulation Environment  │
+                 │      (UAVEnv)                │
+                 └──────────────┬───────────────┘
+                                │
+                          Current State
+                                │
+                                ▼
+                  ┌────────────────────────┐
+                  │   Dueling Double DQN   │
+                  │       Agent            │
+                  └──────────┬─────────────┘
+                             │
+                     Selected Action
+                             │
+                             ▼
+                  ┌────────────────────────┐
+                  │      UAV Environment   │
+                  │ Position • SNR • Users │
+                  │ Obstacles • Battery    │
+                  └──────────┬─────────────┘
+                             │
+                Next State + Reward + Done
+                             │
+                             ▼
+                 Experience Replay Buffer
+                             │
+                             ▼
+                  Network Optimization
+```
+
+---
+
+# ⚙️ Reinforcement Learning Pipeline
+
+The learning process follows the standard Deep Reinforcement Learning workflow.
+
+1. Initialize the UAV simulation environment.
+2. Observe the current environment state.
+3. Select an action using the ε-Greedy policy.
+4. Execute the selected action.
+5. Receive the next state and reward.
+6. Store the transition in the Replay Buffer.
+7. Sample a random mini-batch from memory.
+8. Update the Dueling Double DQN network.
+9. Periodically synchronize the Target Network.
+10. Repeat until convergence.
+
+---
+
+# 📊 State Space
+
+At every time step, the UAV observes a compact state vector describing both its current status and the surrounding environment.
+
+| Feature                     | Description                    |
+| --------------------------- | ------------------------------ |
+| X Position                  | Current X-coordinate           |
+| Y Position                  | Current Y-coordinate           |
+| Z Position                  | Current altitude               |
+| Battery Level               | Remaining battery percentage   |
+| Signal-to-Noise Ratio (SNR) | Communication quality          |
+| Coverage Ratio              | Percentage of explored region  |
+| Distance to Goal            | Euclidean distance from target |
+| Obstacle Proximity          | Distance to nearest obstacle   |
+
+The state representation combines communication, navigation, sensing, and energy information into a single observation vector used by the reinforcement learning agent.
+
+---
+
+# 🎮 Action Space
+
+The UAV operates in a discrete action space consisting of seven navigation actions.
+
+| Action ID | Movement               |
+| --------- | ---------------------- |
+| 0         | Move Up                |
+| 1         | Move Down              |
+| 2         | Move Left              |
+| 3         | Move Right             |
+| 4         | Move Forward Diagonal  |
+| 5         | Move Backward Diagonal |
+| 6         | Hover                  |
+
+Invalid actions that move the UAV outside the environment or into obstacles are rejected by the simulation environment.
+
+---
+
+# 🎁 Reward Function
+
+The agent is trained using a multi-objective reward function designed to balance communication quality, sensing efficiency, navigation safety, and battery consumption.
+
+```text
+Reward =
++ α × Communication Quality (SNR)
++ β × New Area Coverage
+− γ × Collision Penalty
+− δ × Energy Consumption
+```
+
+The reward encourages the UAV to:
+
+* Maintain high communication quality.
+* Explore previously unseen regions.
+* Reach the destination efficiently.
+* Avoid collisions with obstacles.
+* Minimize unnecessary energy expenditure.
+
+Instead of optimizing a single objective, the agent learns to balance multiple competing objectives simultaneously, resulting in more robust navigation policies suitable for disaster-response scenarios.
+
+
 
